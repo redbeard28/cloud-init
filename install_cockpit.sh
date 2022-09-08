@@ -5,6 +5,6 @@
 
 
 source /etc/os-release
-sudo apt install -t ${VERSION_CODENAME}-backports cockpit
+sudo apt install -t ${VERSION_CODENAME}-backports cockpit -y
 sudo systemctl enable cockpit.service
 sudo systemctl start cockpit.service
