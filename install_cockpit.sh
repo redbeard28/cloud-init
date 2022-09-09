@@ -4,7 +4,7 @@
 # version: v1
 
 sudo systemctl stop NetworkManager.service
-sudo systemctl disable NetworkManager.servic
+sudo systemctl disable NetworkManager.service
 
 source /etc/os-release
 sudo apt install -t ${VERSION_CODENAME}-backports cockpit -y
