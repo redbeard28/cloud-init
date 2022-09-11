@@ -1,0 +1,27 @@
+body.login-pf {
+    background-color: #101010;
+}
+
+#badge {
+    width: 500px;
+    background-image: url("logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#brand {
+    font-size: 18pt;
+    text-transform: uppercase;
+}
+
+#brand:before {
+    content: "Enter in the Kuma Labs";
+}
+
+#index-brand {
+    content: "${NAME}";
+}
+
+#index-brand:before {
+    content: "${NAME}";
+}
