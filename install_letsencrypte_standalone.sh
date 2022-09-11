@@ -4,6 +4,10 @@
 # version: v1
 set -x
 
+echo ""
+echo ""
+echo "################# CERTBOT INSTALL ################"
+
 myhs=`hostname`
 
 ############################################################
@@ -62,3 +66,7 @@ if [[ $NAME -eq "Ubuntu" ]]; then
   chown cockpit-ws:cockpit-ws /etc/cockpit/ws-certs.d/${myhs}.${domain}.crt /etc/cockpit/ws-certs.d/${myhs}.${domain}.key
   systemctl restart cockpit
 fi
+
+echo "################# CERTBOT END ################"
+echo ""
+echo ""

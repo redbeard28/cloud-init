@@ -2,7 +2,9 @@
 # Free for All
 # Made with love by Jeremie CUADRADO (kuma-consulting)
 # version: v1
-
+echo ""
+echo ""
+echo "################# COCKPIT INSTALL ################"
 sudo systemctl stop NetworkManager.service
 sudo systemctl disable NetworkManager.service
 
@@ -15,3 +17,6 @@ if [[ $NAME -eq "Ubuntu" ]];then
   sudo systemctl start cockpit.service
   sudo apt remove cockpit-networkmanager -y
 fi
+echo "################# COCKPIT END ################"
+echo ""
+echo ""
