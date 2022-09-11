@@ -14,6 +14,7 @@ if [[ $NAME -eq "Ubuntu" ]];then
   cp -rf kumalabs /usr/share/cockpit/branding/
   sudo systemctl enable cockpit.service
   sudo echo "ID=kumalabs" >>  /lib/systemd/system/cockpit.service
+  sudo systemctl daemon-reload
   sudo systemctl start cockpit.service
   sudo apt remove cockpit-networkmanager -y
 fi
