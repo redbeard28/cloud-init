@@ -1,0 +1,32 @@
+{
+    "bdx0.kumalabs.consulting": {
+        "address": "bdx0.kumalabs.consulting",
+        "visible": true,
+        "color": "rgb(100, 200, 0)",
+        "user": "bdxuser"
+    },
+    "bdx1.kumalabs.consulting": {
+        "address": "bdx1.kumalabs.consulting",
+        "visible": true,
+        "color": "rgb(40, 180, 99)",
+        "user": "bdxuser"
+    },
+    "bdx2.kumalabs.consulting": {
+        "address": "bdx2.kumalabs.consulting",
+        "visible": true,
+        "color": "rgb(211, 84, 0)",
+        "user": "bdxuser"
+    },
+    "bdx3.kumalabs.consulting": {
+        "address": "bdx3.kumalabs.consulting",
+        "visible": true,
+        "color": "rgb(36, 113, 163)",
+        "user": "bdxuser"
+    },
+    "bdx4.kumalabs.consulting": {
+        "address": "bdx4.kumalabs.consulting",
+        "visible": true,
+        "color": "rgb(125, 60, 152)",
+        "user": "bdxuser"
+    }
+}

@@ -20,6 +20,8 @@ if [[ $NAME -eq "Ubuntu" ]];then
   sudo systemctl daemon-reload
   sudo systemctl start cockpit.service
   sudo apt remove cockpit-networkmanager -y
+  sudo cp 05-machines.json /etc/cockpit/machines.d/
+  sudo ls -l /etc/cockpit/machines.d/
 fi
 echo "################# COCKPIT END ################"
 echo ""
