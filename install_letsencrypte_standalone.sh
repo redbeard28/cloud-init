@@ -2,7 +2,6 @@
 # Free for All
 # Made with love by Jeremie CUADRADO (kuma-consulting)
 # version: v1
-set -x
 
 echo ""
 echo ""
