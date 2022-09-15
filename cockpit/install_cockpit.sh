@@ -10,7 +10,7 @@ sudo systemctl disable NetworkManager.service
 
 source /etc/os-release
 if [[ $NAME -eq "Ubuntu" ]];then
-  sudo apt install -t ${VERSION_CODENAME}-backports cockpit -y
+  sudo apt install -t ${VERSION_CODENAME}-backports cockpit cockpit-pcp -y
   sudo cp -rf kumalabs /usr/share/cockpit/branding/
   cd /usr/share/cockpit/branding/
   sudo rm -rf ${ID}
