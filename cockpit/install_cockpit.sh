@@ -8,6 +8,7 @@ echo "################# COCKPIT INSTALL ################"
 sudo systemctl stop NetworkManager.service
 sudo systemctl disable NetworkManager.service
 
+myhs=`hostname`
 source /etc/os-release
 if [[ $NAME -eq "Ubuntu" ]];then
   sudo apt install -t ${VERSION_CODENAME}-backports cockpit cockpit-pcp -y
@@ -20,8 +21,11 @@ if [[ $NAME -eq "Ubuntu" ]];then
   sudo systemctl daemon-reload
   sudo systemctl start cockpit.service
   sudo apt remove cockpit-networkmanager -y
-  sudo cp 05-machines.json /etc/cockpit/machines.d/
-  sudo ls -l /etc/cockpit/machines.d/
+  if [[ $myhs =~ [^form.*] ]]; then
+    sudo apt remove cockpit-networkmanager -y
+    sudo cp 05-machines.json /etc/cockpit/machines.d/
+    sudo ls -l /etc/cockpit/machines.d/
+  fi
 fi
 echo "################# COCKPIT END ################"
 echo ""
