@@ -22,6 +22,7 @@ if [[ $NAME -eq "Ubuntu" ]];then
   sudo systemctl start cockpit.service
   sudo apt remove cockpit-networkmanager -y
   if [[ $myhs =~ [^form.*] ]]; then
+    cd /root/cloud-init/cockpit
     sudo apt remove cockpit-networkmanager -y
     sudo cp 05-machines.json /etc/cockpit/machines.d/
     sudo ls -l /etc/cockpit/machines.d/
