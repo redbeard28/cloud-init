@@ -13,4 +13,4 @@ Chacun des scripts gères ses propres versions.
 # Licence
 Image from cockpit/kumalabs/logo.png belong to the company kuma-consulting.
 
-Only kuma-consulting has the right to use these logs and images
+Only kuma-consulting has the right to use these logos and images
