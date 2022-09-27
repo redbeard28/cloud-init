@@ -34,6 +34,8 @@ while getopts ":hd:m:" option; do
          domain=$OPTARG;;
       m) # Mail  account
          mail=$OPTARG;;
+      s) # Enter Letsencrypte server
+         server_acme=$OPTARG;;
       h) # display Help
          Help
          exit;;
@@ -57,7 +59,7 @@ if [[ $NAME -eq "Ubuntu" ]]; then
   sudo snap install --classic certbot
   sudo ln -s /snap/bin/certbot /usr/bin/certbot
   echo ${myhs}.${domain} ${mail}
-  certbot certonly --standalone --noninteractive --server https://acme-staging-v02.api.letsencrypt.org/directory --agree-tos --email ${mail} -d ${myhs}.${domain}
+  certbot certonly --standalone --noninteractive --server ${server_acme} --agree-tos --email ${mail} -d ${myhs}.${domain}
   cp /etc/hosts /etc/hosts.ori
   echo "127.0.0.1 ${myhs}.${domain} ${myhs} localhost" > /etc/hosts
   cp /etc/letsencrypt/live/${myhs}.${domain}/fullchain.pem /etc/cockpit/ws-certs.d/${myhs}.${domain}.crt
