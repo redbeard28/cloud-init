@@ -28,7 +28,7 @@ Help()
 
 
 
-while getopts ":hd:m:" option; do
+while getopts ":hd:m:s:" option; do
    case $option in
       d) # Enter a name
          domain=$OPTARG;;
