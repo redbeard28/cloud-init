@@ -10,7 +10,7 @@ sudo systemctl disable NetworkManager.service
 
 myhs=`hostname`
 source /etc/os-release
-if [[ $NAME -eq "Ubuntu" ]];then
+if [[ $ID -eq "ubuntu" ]];then
   sudo apt install -t ${VERSION_CODENAME}-backports cockpit cockpit-pcp -y
   sudo cp -rf kumalabs /usr/share/cockpit/branding/
   cd /usr/share/cockpit/branding/
@@ -28,7 +28,7 @@ if [[ $NAME -eq "Ubuntu" ]];then
     sudo ls -l /etc/cockpit/machines.d/
   fi
 fi
-if [[ $NAME -eq "Debian" ]];then
+if [[ $ID -eq "debian" ]];then
   sudo apt install -t ${VERSION_CODENAME}-backports cockpit cockpit-pcp -y
   sudo cp -rf kumalabs /usr/share/cockpit/branding/
   cd /usr/share/cockpit/branding/
