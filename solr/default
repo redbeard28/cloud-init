@@ -1,0 +1,13 @@
+server {
+    listen       80 default_server;
+    listen       [::]:80 default_server;
+    server_name  *.kumalabs.consulting;
+    root         /usr/share/nginx/html;
+
+    # Load configuration files for the default server block.
+    include /etc/nginx/default.d/*.conf;
+
+    if ($scheme != "https") {
+        return 301 https://$host$request_uri;
+    }
+}
