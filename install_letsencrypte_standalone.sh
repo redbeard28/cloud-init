@@ -54,7 +54,7 @@ done
 
 source /etc/os-release
 if [[ $ID -eq "debian" ]]; then
-  sudo apt install -y snap
+  sudo apt install -y snapd
   sudo snap install core
   sudo snap refresh core
   sudo snap install --classic certbot
