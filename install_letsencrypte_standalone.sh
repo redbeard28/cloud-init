@@ -53,7 +53,23 @@ done
 
 
 source /etc/os-release
-if [[ $NAME -eq "Ubuntu" ]]; then
+if [[ $ID -eq "debian" ]]; then
+  sudo apt install -y snap
+  sudo snap install core
+  sudo snap refresh core
+  sudo snap install --classic certbot
+  sudo ln -s /snap/bin/certbot /usr/bin/certbot
+  echo ${myhs}.${domain} ${mail}
+  certbot certonly --standalone --noninteractive --server ${server_acme} --agree-tos --email ${mail} -d ${myhs}.${domain}
+  cp /etc/hosts /etc/hosts.ori
+  echo "127.0.0.1 ${myhs}.${domain} ${myhs} localhost" > /etc/hosts
+  cp /etc/letsencrypt/live/${myhs}.${domain}/fullchain.pem /etc/cockpit/ws-certs.d/${myhs}.${domain}.crt
+  cp /etc/letsencrypt/live/${myhs}.${domain}/privkey.pem /etc/cockpit/ws-certs.d/${myhs}.${domain}.key
+  chown cockpit-ws:cockpit-ws /etc/cockpit/ws-certs.d/${myhs}.${domain}.crt /etc/cockpit/ws-certs.d/${myhs}.${domain}.key
+  systemctl restart cockpit
+fi
+
+if [[ $ID -eq "ubuntu" ]]; then
   sudo snap install core
   sudo snap refresh core
   sudo snap install --classic certbot
