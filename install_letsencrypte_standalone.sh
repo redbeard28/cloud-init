@@ -21,7 +21,7 @@ Help()
    echo "Syntax: scriptTemplate [-d|h]"
    echo "options:"
    echo "d     Domain input."
-   echo "d     Mail account for let s encrypte input."
+   echo "m     Mail account for let s encrypte input."
    echo "h     Print this Help."
    echo
 }
