@@ -23,6 +23,7 @@ if [[ "$ID" == 'debian' ]];then
       exit 1
     fi
   else
+    apt-get install -y php8.1
     ./install_docker.sh $1
   fi
 elif [[ "$ID" == 'ubuntu' ]];then
@@ -32,6 +33,7 @@ elif [[ "$ID" == 'ubuntu' ]];then
       exit 1
     fi
   else
+    apt-get install -y php8.1
     ./install_docker.sh $1
   fi
 else

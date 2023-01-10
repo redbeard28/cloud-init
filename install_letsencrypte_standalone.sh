@@ -7,7 +7,7 @@ echo ""
 echo ""
 echo "################# CERTBOT INSTALL ################"
 
-myhs=`hostname`
+#domain=`hostname`
 
 ############################################################
 # Help                                                     #
@@ -22,6 +22,7 @@ Help()
    echo "options:"
    echo "d     Domain input."
    echo "m     Mail account for let s encrypte input."
+   echo "s     https://acme-v02.api.letsencrypt.org/directory or https://acme-staging-v02.api.letsencrypt.org/directory."
    echo "h     Print this Help."
    echo
 }
@@ -59,13 +60,13 @@ if [[ $ID -eq "debian" ]]; then
   sudo snap refresh core
   sudo snap install --classic certbot
   sudo ln -s /snap/bin/certbot /usr/bin/certbot
-  echo ${myhs}.${domain} ${mail}
-  certbot certonly --standalone --noninteractive --server ${server_acme} --agree-tos --email ${mail} -d ${myhs}.${domain}
+  echo ${domain} ${mail}
+  certbot certonly --standalone --noninteractive --server ${server_acme} --agree-tos --email ${mail} -d ${domain}
   cp /etc/hosts /etc/hosts.ori
-  echo "127.0.0.1 ${myhs}.${domain} ${myhs} localhost" > /etc/hosts
-  cp /etc/letsencrypt/live/${myhs}.${domain}/fullchain.pem /etc/cockpit/ws-certs.d/${myhs}.${domain}.crt
-  cp /etc/letsencrypt/live/${myhs}.${domain}/privkey.pem /etc/cockpit/ws-certs.d/${myhs}.${domain}.key
-  chown cockpit-ws:cockpit-ws /etc/cockpit/ws-certs.d/${myhs}.${domain}.crt /etc/cockpit/ws-certs.d/${myhs}.${domain}.key
+  echo "127.0.0.1 ${domain} localhost" > /etc/hosts
+  cp /etc/letsencrypt/live/${domain}/fullchain.pem /etc/cockpit/ws-certs.d/${domain}.crt
+  cp /etc/letsencrypt/live/${domain}/privkey.pem /etc/cockpit/ws-certs.d/${domain}.key
+  chown cockpit-ws:cockpit-ws /etc/cockpit/ws-certs.d/${domain}.crt /etc/cockpit/ws-certs.d/${domain}.key
   systemctl restart cockpit
 fi
 
@@ -74,13 +75,13 @@ if [[ $ID -eq "ubuntu" ]]; then
   sudo snap refresh core
   sudo snap install --classic certbot
   sudo ln -s /snap/bin/certbot /usr/bin/certbot
-  echo ${myhs}.${domain} ${mail}
-  certbot certonly --standalone --noninteractive --server ${server_acme} --agree-tos --email ${mail} -d ${myhs}.${domain}
+  echo ${domain} ${mail}
+  certbot certonly --standalone --noninteractive --server ${server_acme} --agree-tos --email ${mail} -d ${domain}
   cp /etc/hosts /etc/hosts.ori
-  echo "127.0.0.1 ${myhs}.${domain} ${myhs} localhost" > /etc/hosts
-  cp /etc/letsencrypt/live/${myhs}.${domain}/fullchain.pem /etc/cockpit/ws-certs.d/${myhs}.${domain}.crt
-  cp /etc/letsencrypt/live/${myhs}.${domain}/privkey.pem /etc/cockpit/ws-certs.d/${myhs}.${domain}.key
-  chown cockpit-ws:cockpit-ws /etc/cockpit/ws-certs.d/${myhs}.${domain}.crt /etc/cockpit/ws-certs.d/${myhs}.${domain}.key
+  echo "127.0.0.1 ${domain} localhost" > /etc/hosts
+  cp /etc/letsencrypt/live/${domain}/fullchain.pem /etc/cockpit/ws-certs.d/${domain}.crt
+  cp /etc/letsencrypt/live/${domain}/privkey.pem /etc/cockpit/ws-certs.d/${domain}.key
+  chown cockpit-ws:cockpit-ws /etc/cockpit/ws-certs.d/${domain}.crt /etc/cockpit/ws-certs.d/${domain}.key
   systemctl restart cockpit
 fi
 
