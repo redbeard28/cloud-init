@@ -65,8 +65,8 @@ if [[ $? -eq 0 ]]; then
   sed -i "s/MYTOKEN/${mytoken}/g" cloudflare/credentials
   docker compose up
 
-  cp /etc/hosts /etc/hosts.ori
-  echo "127.0.0.1 ${domain} localhost" > /etc/hosts
+  sudo cp /etc/hosts /etc/hosts.ori
+  sudo echo "127.0.0.1 ${domain} localhost" > /etc/hosts
 else
   echo "###### NO BIN DOCKER ############"
 fi
