@@ -16,14 +16,14 @@ echo "################# CERTBOT INSTALL ################"
 Help()
 {
    # Display Help
-   echo "Install let s encrypte from snap."
+   echo "Install let s encrypt from snap."
    echo
    echo "Syntax: scriptTemplate [-d|h]"
    echo "options:"
    echo "d     Domain input."
-   echo "m     Mail account for let s encrypte input."
+   echo "m     Mail account for let s encrypt input."
    echo "t     CloudFlare TOKEN."
-   echo "s     https://acme-v02.api.letsencrypt.org/directory or https://acme-staging-v02.api.letsencrypt.org/directory."
+   echo "s     ACme staging or prod. Don t put the URL"
    echo "h     Print this Help."
    echo
 }
@@ -37,7 +37,7 @@ while getopts ":hd:m:t:s:" option; do
       m) # Mail  account
          mail=$OPTARG;;
       s) # Enter Letsencrypte server
-         server_acme=$OPTARG;;
+         acme_env=$OPTARG;;
       t) # Enter Letsencrypte server
          mytoken=$OPTARG;;
       h) # display Help
@@ -56,17 +56,26 @@ done
 ############################################################
 
 
+if [[ $acme_env -eq "staging" ]]; then # Enter Letsencrypte server
+  acme_url="https\:\/\/acme-staging-v02.api.letsencrypt.org"
+elif [[ $acme_env -eq "prod" ]]; then
+  acme_url="https\:\/\/acme-v02.api.letsencrypt.org"
+else
+  echo "### acme_env doit etre staging ou prod"
+  exit 1
+fi
+
 DOCKER_CMD=`docker version`
 
 if [[ $? -eq 0 ]]; then
   sed -i "s/MYEMAIL/${mail}/g" .env
-  sed -i "s/MYACME/${server_acme}/g" .env
+  sed -i "s/MYACME/${acme_url}/g" .env
   sed -i "s/MYFQDN/${domain}/g" .env
   sed -i "s/MYTOKEN/${mytoken}/g" cloudflare/credentials
   docker compose up
 
   sudo cp /etc/hosts /etc/hosts.ori
-  sudo echo "127.0.0.1 ${domain} localhost" > /etc/hosts
+  #sudo echo "127.0.0.1 ${domain} localhost" > /etc/hosts
 else
   echo "###### NO BIN DOCKER ############"
 fi
