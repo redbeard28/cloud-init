@@ -65,8 +65,8 @@ done
 #  exit 1
 #fi
 
-[ "$acme_env" -eq "staging" ] && acme_url="https\:\/\/acme-staging-v02.api.letsencrypt.org\/directory"
-[ "$acme_env" -eq "prod" ] && acme_url="https\:\/\/acme-v02.api.letsencrypt.org\/directory"
+[ "$acme_env" == "staging" ] && acme_url="https\:\/\/acme-staging-v02.api.letsencrypt.org\/directory"
+[ "$acme_env" == "prod" ] && acme_url="https\:\/\/acme-v02.api.letsencrypt.org\/directory"
 
 
 DOCKER_CMD=`docker version`
