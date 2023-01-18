@@ -57,9 +57,9 @@ done
 
 
 if [[ $acme_env -eq "staging" ]]; then # Enter Letsencrypte server
-  acme_url="https\:\/\/acme-staging-v02.api.letsencrypt.org"
+  acme_url="https\:\/\/acme-staging-v02.api.letsencrypt.org\/directory"
 elif [[ $acme_env -eq "prod" ]]; then
-  acme_url="https\:\/\/acme-v02.api.letsencrypt.org"
+  acme_url="https\:\/\/acme-v02.api.letsencrypt.org\/directory"
 else
   echo "### acme_env doit etre staging ou prod"
   exit 1
@@ -80,6 +80,6 @@ else
   echo "###### NO BIN DOCKER ############"
 fi
 
-
+sudo cp -rf letsencrypt /etc/
 echo ""
 echo ""
