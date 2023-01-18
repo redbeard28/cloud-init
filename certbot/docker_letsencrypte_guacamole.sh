@@ -80,6 +80,16 @@ else
   echo "###### NO BIN DOCKER ############"
 fi
 
-sudo cp -rf letsencrypt /etc/
+DIR="letsencrypt/live/{domain}"
+if [ -d "$DIR" ]; then
+  ### Take action if $DIR exists ###
+  echo "############ ${DIR} => OK"
+  sudo cp -rf letsencrypt /etc/
+else
+  ###  Control will jump here if $DIR does NOT exists ###
+  echo "Error: ${DIR} not found. Can not continue."
+  exit 1
+fi
+
 echo ""
 echo ""
