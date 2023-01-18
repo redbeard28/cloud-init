@@ -64,7 +64,7 @@ done
 #  echo "### acme_env doit etre staging ou prod"
 #  exit 1
 #fi
-
+sudo apt-get -y remove ufw
 [ "$acme_env" == "staging" ] && acme_url="https\:\/\/acme-staging-v02.api.letsencrypt.org\/directory"
 [ "$acme_env" == "prod" ] && acme_url="https\:\/\/acme-v02.api.letsencrypt.org\/directory"
 
