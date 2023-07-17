@@ -18,24 +18,11 @@ if [[ "$ID" == 'debian' ]];then
   echo $ID
 # Actions for Debian OS
   if [[ "$EUID" -ne 0 ]];then
-    if [[ `which sudo` -ne 0 ]];then
-  	  echo "There is no sudo command, please install..."
-      exit 1
-    fi
-  else
     apt-get install -y php8.1
     ./install_docker.sh $1
-  fi
 elif [[ "$ID" == 'ubuntu' ]];then
-  if [[ "$EUID" -ne 0 ]];then
-    if [[ `which sudo` -ne 0 ]];then
-  	  echo "There is no sudo command, please install..."
-      exit 1
-    fi
-  else
     apt-get install -y php8.1
     ./install_docker.sh $1
-  fi
 else
   echo "This script is usefull for debian/ubuntu os"
   exit 1
