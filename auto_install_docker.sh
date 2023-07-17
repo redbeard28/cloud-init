@@ -15,9 +15,6 @@ else
 fi
 
 if [[ "$ID" == 'debian' ]];then
-  echo $ID
-# Actions for Debian OS
-  if [[ "$EUID" -ne 0 ]];then
     apt-get install -y php8.1
     ./install_docker.sh $1
 elif [[ "$ID" == 'ubuntu' ]];then
